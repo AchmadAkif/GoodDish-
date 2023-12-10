@@ -1,0 +1,25 @@
+@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slick-list {
+  margin: 0 -10px;
+}
+
+.slick-slide>div {
+  margin: 0 10px;
+}
+
+.slick-prev {
+  left: -10px;
+}
+
+.slick-next {
+  right: -10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
