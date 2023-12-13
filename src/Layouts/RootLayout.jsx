@@ -52,16 +52,8 @@ function RootLayout() {
           <Outlet />  
         </Content>
       </Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          style={{
-            height: '100vh'
-          }}
-        />
+      <Sider 
+      style={{height: '100vh', background: '#000000'}} width={500} trigger={null} collapsible collapsed={collapsed}>
       </Sider>
     </Layout>
   )

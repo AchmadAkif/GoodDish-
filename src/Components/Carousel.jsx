@@ -33,9 +33,9 @@ const Carousel = (props) => {
           <h1 className="font-gilroyBold">{product.name}</h1>
           <p className="font-gilroyMed">${product.price}</p>
           <div className="flex">
-            <Button icon={<MinusOutlined />} />
-            <input min={0} type="number" className="max-w-[50px] outline-none font-gilroyMed bg-[#eaeaea]" />
-            <Button icon={<PlusOutlined />} />
+            <Button icon={<MinusOutlined />} className="bg-white" />
+            <input min={0} type="number" className="max-w-[35px] text-center outline-none font-gilroyMed bg-[#eaeaea]" />
+            <Button icon={<PlusOutlined />} className="bg-white" />
           </div>
         </div>
       ))}
