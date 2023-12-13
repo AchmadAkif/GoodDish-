@@ -1,16 +1,20 @@
 // React
-import React from 'react'
+import React, { useState } from 'react'
 
 // Router
 import { NavLink, Outlet, useNavigate } from "react-router-dom"
 
 // Antd
-import { Layout, Menu, theme, Divider } from 'antd';
-import Navbar from '../Components/Navbar';
+import { Layout, Menu } from 'antd';
 const { Header, Content, Sider } = Layout;
+
+// Pages
+import Navbar from '../Components/Navbar';
 
 function RootLayout() {
   const navigate = useNavigate()
+
+  const [collapsed, setCollapsed] = useState(true)
 
   return (
     <Layout>
@@ -30,7 +34,8 @@ function RootLayout() {
           items={[
             {label: "Home", key:"/"},
             {label: "Food & Drinks", key:"POS"},
-            {label: "About", key:"about"},          
+            {label: "About", key:"about"},   
+
             {label: "Setting"},
             {label: "Help"}
           ]}
@@ -39,25 +44,24 @@ function RootLayout() {
           }}>
         </Menu>
       </Sider>
-      <Layout className='site-layout' style={{marginLeft: 200, marginRight: 200}}>
-        <Header className='bg-white'>
-          <Navbar/>
+      <Layout className='site-layout' style={{marginLeft: 200}}>
+        <Header className='bg-white pr-0'>
+          <Navbar parentCollapsed={collapsed} setParentCollapsed={setCollapsed} />
         </Header>
         <Content className='px-[20px] py-10 bg-[#eaeaea]'>
           <Outlet />  
         </Content>
       </Layout>
-      <Sider
-      style={{
-        overflow: 'auto',
-        height: '100vh',
-        position: 'fixed',
-        right: 0,
-        top: 0,
-        bottom: 0,
-        background: '#000000'
-      }}>
-
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className="demo-logo-vertical" />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          style={{
+            height: '100vh'
+          }}
+        />
       </Sider>
     </Layout>
   )
