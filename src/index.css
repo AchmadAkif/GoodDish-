@@ -35,3 +35,19 @@ input[type=number] {
 .slick-next:before {
   color: black;
 }
+
+.ant-menu-item-selected {
+  background-color: #2D2D2D !important;
+}
+
+.ant-menu-item-selected .ant-menu-title-content {
+  color: #FFFFFF;
+}
+
+.ant-drawer-header {
+  background-color: #121212;
+}
+
+.ant-drawer-title {
+  color: #fff!important;
+}
