@@ -3,7 +3,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 
 
-function Navbar({ drawerIsOpen, setDrawerIsOpen }) {
+function Navbar({ drawerIsOpen, setDrawerIsOpen, showCartBtn }) {
   const handleClick = () => {
     setDrawerIsOpen(!drawerIsOpen)
   }
@@ -13,7 +13,9 @@ function Navbar({ drawerIsOpen, setDrawerIsOpen }) {
       <h1 className="text-[25px]">GoodDish!</h1>
       <div>
         <input type="text" placeholder="Type to search" className="h-[30px] outline-none bg-[#eaeaea] rounded-2xl px-3 font-gilroyMed" />
-        <Button icon={<ShoppingCartOutlined/>} onClick={handleClick} />
+        { showCartBtn ?
+          <Button icon={<ShoppingCartOutlined/>} onClick={handleClick} />
+          : null }
       </div>
     </div>
   )

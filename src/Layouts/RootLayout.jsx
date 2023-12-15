@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // Router
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
 // Antd
 import { ConfigProvider, Layout, Menu } from 'antd';
 const { Header, Content, Sider } = Layout;
@@ -10,10 +10,13 @@ import Navbar from '../Components/Navbar';
 
 function RootLayout() {
   // Navigate Router
+  const location = useLocation();
   const navigate = useNavigate()
-
+  
   // Controlling POS Drawer
   const [drawerIsOpen, setDrawerIsOpen] = useState(false)
+
+  const isShowCartBtn = location.pathname === '/POS'
 
   return (
     <ConfigProvider
@@ -61,7 +64,7 @@ function RootLayout() {
             top: "0"
           }} 
           className='bg-white'>
-            <Navbar drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} />
+            <Navbar showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} />
           </Header>
           <Content className='h-[100vh] px-[20px] py-10'>
             <Outlet context={[drawerIsOpen, setDrawerIsOpen]} />  

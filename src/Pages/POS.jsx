@@ -1,11 +1,11 @@
+import { useState } from "react"
 // Router
 import { useLoaderData } from "react-router-dom"
 import { useOutletContext } from "react-router-dom"
 // Antd
-import { Drawer } from "antd"
+import { Drawer, Button } from "antd"
 // Component
 import Carousel from "../Components/Carousel"
-
 
 function POS() {
   // Loader
