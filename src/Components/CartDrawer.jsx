@@ -1,5 +1,6 @@
 // Antd
-import { Drawer } from "antd"
+import { DeleteOutlined } from "@ant-design/icons"
+import { Drawer, Button } from "antd"
 
 
 const CartDrawer = ({onClose, drawerIsOpen, productOnCart, handleRemoveProduct}) => {
@@ -21,6 +22,7 @@ const CartDrawer = ({onClose, drawerIsOpen, productOnCart, handleRemoveProduct})
           <div key={product.id} className="px-3 py-2 space-y-3 bg-[#2d2d2d] rounded-md">
             <h1 className="font-gilroyBold text-[14px]">{product.name}</h1>
             <h1 className="font-gilroyBold text-[#909090]">${product.price}</h1>
+            <Button icon={<DeleteOutlined/>} onClick={() => handleRemoveProduct(product.id)} />
           </div>
         ))}
       </div>
