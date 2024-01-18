@@ -34,32 +34,32 @@
     ],
     "salads": [
       {
-        "id": 1,
+        "id": 7,
         "name": "Roman Caesar",
         "price": 5.00
       },
       {
-        "id": 2,
+        "id": 8,
         "name": "Gado-Gado",
         "price": 5.00
       },
       {
-        "id": 3,
+        "id": 9,
         "name": "Salad Buah",
         "price": 5.00
       },
       {
-        "id": 4,
+        "id": 10,
         "name": "Roman Caesar",
         "price": 5.00
       },
       {
-        "id": 5,
+        "id": 11,
         "name": "Roman Caesar",
         "price": 5.00
       },
       {
-        "id": 6,
+        "id": 12,
         "name": "Roman Caesar",
         "price": 5.00
       }
