@@ -11,10 +11,10 @@ function Navbar({ drawerIsOpen, setDrawerIsOpen, showCartBtn }) {
   return (
     <div className='flex justify-between items-center font-gilroyBold'>
       <h1 className="text-[25px]">GoodDish!</h1>
-      <div>
+      <div className='space-x-3'>
         <input type="text" placeholder="Type to search" className="h-[30px] outline-none bg-[#eaeaea] rounded-2xl px-3 font-gilroyMed" />
         { showCartBtn ?
-          <Button icon={<ShoppingCartOutlined/>} onClick={handleClick} />
+          <Button className='bg-[#eaeaea] border-0 shadow-none' shape='circle' icon={<ShoppingCartOutlined/>} onClick={handleClick} />
           : null }
       </div>
     </div>
