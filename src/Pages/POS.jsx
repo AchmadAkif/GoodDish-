@@ -16,6 +16,7 @@ function POS() {
   const [productOnCart, setProductOnCart] = useState([])
   const [totalPrice, setTotalPrice] = useState()
   const [subtotalPrice, setSubtotalPrice] = useState()
+  const [amount, setAmount] = useState()
 
   const productData = useLoaderData()
   const onClose = () => {
@@ -61,8 +62,8 @@ function POS() {
       })
 
       setProductOnCart(newCart)
-      console.log(productOnCart)
-      console.log(newCart)
+      // console.log(productOnCart)
+      // console.log(newCart)
     } 
       else {
       const productCopy = {
@@ -74,12 +75,91 @@ function POS() {
     }
   }
 
-  const handleAddAmount = (dataID) => {
-  }
-
   const handleRemoveProduct = (id) => {
     setProductOnCart(productOnCart.filter( product => product.id !== id))
   }
+
+  const handleAddAmount = (dataID) => {
+    let checkProductIsExist = productOnCart.find(data => dataID === data.id)
+
+    if(checkProductIsExist) {
+      let newCart = []
+      let newItem
+
+      productOnCart.forEach(dataProduct => {
+        if(dataProduct.id == dataID) {
+          newItem = {
+            ...dataProduct,
+            amount: dataProduct.amount + 1,
+          }
+
+          newCart.push(newItem)
+        } 
+        else {
+          newCart.push(dataProduct)
+        }
+      })
+
+      setProductOnCart(newCart)
+    }
+
+    console.log(productOnCart)
+  }
+
+  const handleRemoveAmount = (dataID) => {
+    let checkProductIsExist = productOnCart.find(data => dataID === data.id)
+
+    if(checkProductIsExist) {
+      let newCart = []
+      let newItem
+
+      productOnCart.forEach(dataProduct => {
+        if(dataProduct.id == dataID) {
+          newItem = {
+            ...dataProduct,
+            amount: dataProduct.amount - 1,
+          }
+
+          newCart.push(newItem)
+        } 
+        else {
+          newCart.push(dataProduct)
+        }
+      })
+
+      setProductOnCart(newCart)
+    }
+  }
+
+  // const handleStoreAmountValue = (dataID) => {
+  //   let checkProductIsExist = productOnCart.find(data => dataID === data.id)
+
+  //   if(checkProductIsExist) {
+  //     let newCart = []
+  //     let newItem
+
+  //     productOnCart.forEach(dataProduct => {
+  //       if(dataProduct.id == dataID) {
+  //         newItem = {
+  //           ...dataProduct,
+  //           amount: amount,
+  //         }
+
+  //         newCart.push(newItem)
+  //       } 
+  //       else {
+  //         newCart.push(dataProduct)
+  //       }
+  //     })
+
+  //     setProductOnCart(newCart)
+  //   }
+  //   console.log(productOnCart)
+  // }
+
+  // const handleChangeAmount = (value) => {
+  //   setAmount(value)
+  // }
 
   return (
     <div className="space-y-[20px]">
@@ -91,7 +171,20 @@ function POS() {
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Salads</h1>
         <Carousel handleAddToCart={handleAddToCart} productData={productData.salads} />
       </div>
-      <CartDrawer subtotalPrice={subtotalPrice} totalPrice={totalPrice} onClose={onClose} drawerIsOpen={drawerIsOpen} productOnCart={productOnCart} onAddAmount={handleAddAmount} onRemoveProduct={handleRemoveProduct} />
+      <CartDrawer 
+        subtotalPrice={subtotalPrice} 
+        totalPrice={totalPrice} 
+        onClose={onClose} 
+        drawerIsOpen={drawerIsOpen} 
+        productOnCart={productOnCart} 
+        onAddAmount={handleAddAmount} 
+        // onChangeAmount={handleChangeAmount} 
+        // onStoreAmountValue={handleStoreAmountValue}
+        onRemoveAmount={handleRemoveAmount} 
+        onRemoveProduct={handleRemoveProduct} 
+        amount={amount}
+        setAmount={setAmount}
+      />
     </div>
   )
 }
