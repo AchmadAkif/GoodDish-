@@ -10,7 +10,6 @@ import { useOutletContext } from "react-router-dom"
 import Carousel from "../Components/Carousel"
 import CartDrawer from "../Components/CartDrawer"
 
-import { v4 as uuidv4 } from 'uuid';
 
 function POS() {
   const [drawerIsOpen, setDrawerIsOpen] = useOutletContext()
@@ -33,7 +32,7 @@ function POS() {
     }
 
     productOnCart.forEach(product => {
-      sub += product.price
+      sub += (product.price * product.amount)
     })
     setSubtotalPrice(sub)
     calculateTax(sub)
@@ -41,21 +40,41 @@ function POS() {
   },[productOnCart])
 
   const handleAddToCart = (product) => {
-    // const productExist = productOnCart.find(data => data.name === product.name)
+    let checkProductIsExist = productOnCart.find(data => data.id === product.id)
 
-    // if(productExist) {
-    //   return
-    // }
-     
-    const productCopy = {
-      id: uuidv4(),
-      name: product.name,
-      price: product.price,
-      amount: 1
+    if(checkProductIsExist) {
+      let newCart = []
+      let newItem
+
+      productOnCart.forEach(dataProduct => {
+        if(dataProduct.id == product.id) {
+          newItem = {
+            ...dataProduct,
+            amount: dataProduct.amount + 1,
+          }
+
+          newCart.push(newItem)
+        } 
+        else {
+          newCart.push(dataProduct)
+        }
+      })
+
+      setProductOnCart(newCart)
+      console.log(productOnCart)
+      console.log(newCart)
+    } 
+      else {
+      const productCopy = {
+        ...product,
+        amount: 1,
+      }
+  
+      setProductOnCart([...productOnCart, productCopy])
     }
+  }
 
-    setProductOnCart([...productOnCart, productCopy])
-    console.log(productOnCart)
+  const handleAddAmount = (dataID) => {
   }
 
   const handleRemoveProduct = (id) => {
@@ -72,7 +91,7 @@ function POS() {
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Salads</h1>
         <Carousel handleAddToCart={handleAddToCart} productData={productData.salads} />
       </div>
-      <CartDrawer subtotalPrice={subtotalPrice} totalPrice={totalPrice} onClose={onClose} drawerIsOpen={drawerIsOpen} productOnCart={productOnCart} handleRemoveProduct={handleRemoveProduct} />
+      <CartDrawer subtotalPrice={subtotalPrice} totalPrice={totalPrice} onClose={onClose} drawerIsOpen={drawerIsOpen} productOnCart={productOnCart} onAddAmount={handleAddAmount} onRemoveProduct={handleRemoveProduct} />
     </div>
   )
 }
