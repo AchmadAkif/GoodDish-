@@ -15,9 +15,10 @@ function RootLayout() {
   
   // Controlling POS Drawer
   const [drawerIsOpen, setDrawerIsOpen] = useState(false)
-
   const isShowCartBtn = location.pathname === '/POS'
-
+  
+  const [productOnCart, setProductOnCart] = useState([])
+  
   return (
     <ConfigProvider
       theme={{
@@ -27,6 +28,15 @@ function RootLayout() {
             itemHoverColor: "#fff",
             itemHoverBg: "#121212", 
           },
+          Radio: {
+            buttonBg: "#1F1F1F",
+            buttonColor: "#fff",
+            colorBorder: "#1f1f1f",
+            buttonSolidCheckedBg: "#fff",
+            buttonSolidCheckedColor: "#000",
+            buttonSolidCheckedHoverBg: "#ff",
+            
+          }
         },
       }}
     >
@@ -64,10 +74,10 @@ function RootLayout() {
             top: "0"
           }} 
           className='bg-white'>
-            <Navbar showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} />
+            <Navbar showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} productOnCart={productOnCart} />
           </Header>
           <Content className='h-[100vh] px-[20px] py-10'>
-            <Outlet context={[drawerIsOpen, setDrawerIsOpen]} />  
+            <Outlet context={[drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart]} />  
           </Content>
         </Layout>
       </Layout>
