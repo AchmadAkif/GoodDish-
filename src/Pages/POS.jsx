@@ -1,10 +1,9 @@
+// React
 import { useEffect, useState } from "react"
+
 // Router
 import { useLoaderData } from "react-router-dom"
 import { useOutletContext } from "react-router-dom"
-
-// Antd
-// import { Drawer } from "antd"
 
 // Component
 import Carousel from "../Components/Carousel"
@@ -12,11 +11,10 @@ import CartDrawer from "../Components/CartDrawer"
 
 
 function POS() {
-  const [drawerIsOpen, setDrawerIsOpen] = useOutletContext()
-  const [productOnCart, setProductOnCart] = useState([])
+  const [drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart] = useOutletContext()
   const [totalPrice, setTotalPrice] = useState()
   const [subtotalPrice, setSubtotalPrice] = useState()
-  const [amount, setAmount] = useState()
+  // const [amount, setAmount] = useState()
 
   const productData = useLoaderData()
   const onClose = () => {
@@ -103,7 +101,7 @@ function POS() {
       setProductOnCart(newCart)
     }
 
-    console.log(productOnCart)
+    // console.log(productOnCart)
   }
 
   const handleRemoveAmount = (dataID) => {
@@ -131,35 +129,32 @@ function POS() {
     }
   }
 
-  // const handleStoreAmountValue = (dataID) => {
-  //   let checkProductIsExist = productOnCart.find(data => dataID === data.id)
+  // const handleAmountChange  = () => {
+    // let checkProductIsExist = productOnCart.find(data => dataID === data.id)
 
-  //   if(checkProductIsExist) {
-  //     let newCart = []
-  //     let newItem
+    // if(checkProductIsExist) {
+    //   let newCart = []
+    //   let newItem
 
-  //     productOnCart.forEach(dataProduct => {
-  //       if(dataProduct.id == dataID) {
-  //         newItem = {
-  //           ...dataProduct,
-  //           amount: amount,
-  //         }
+    //   productOnCart.forEach(dataProduct => {
+    //     if(dataProduct.id == dataID) {
+    //       newItem = {
+    //         ...dataProduct,
+    //         amount: amount,
+    //       }
 
-  //         newCart.push(newItem)
-  //       } 
-  //       else {
-  //         newCart.push(dataProduct)
-  //       }
-  //     })
+    //       newCart.push(newItem)
+    //     } 
+    //     else {
+    //       newCart.push(dataProduct)
+    //     }
+    //   })
 
-  //     setProductOnCart(newCart)
-  //   }
-  //   console.log(productOnCart)
+    //   setProductOnCart(newCart)
+    // }
+  //   console.log(amount)
   // }
 
-  // const handleChangeAmount = (value) => {
-  //   setAmount(value)
-  // }
 
   return (
     <div className="space-y-[20px]">
@@ -178,12 +173,11 @@ function POS() {
         drawerIsOpen={drawerIsOpen} 
         productOnCart={productOnCart} 
         onAddAmount={handleAddAmount} 
-        // onChangeAmount={handleChangeAmount} 
-        // onStoreAmountValue={handleStoreAmountValue}
+        // onAmountChange={handleAmountChange}
         onRemoveAmount={handleRemoveAmount} 
         onRemoveProduct={handleRemoveProduct} 
-        amount={amount}
-        setAmount={setAmount}
+        // amount={amount}
+        // setAmount={setAmount}
       />
     </div>
   )
