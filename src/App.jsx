@@ -2,7 +2,6 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 
-
 // Router
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
 

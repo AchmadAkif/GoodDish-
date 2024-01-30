@@ -3,7 +3,7 @@
 
 // Antd
 // import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
-import { ConfigProvider, Button } from "antd";
+import { Button } from "antd";
 
 // React-Slick
 import Slider from "react-slick";
