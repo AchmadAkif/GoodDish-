@@ -26,7 +26,7 @@ function POS() {
     let sub = 0
 
     const calculateTax = (totalAmount) => {
-      total += sub + (totalAmount * (5 / 100))
+      total += sub + (totalAmount * (2 / 100))
       setTotalPrice(total)
     }
 
@@ -187,7 +187,7 @@ export default POS
 
 // Loader
 export const dataLoader = async () => {
-  const res = await fetch('http://localhost:3000/products')
+  const res = await fetch('https://good-dish-json-server.vercel.app/products')
 
   return res.json()
 }

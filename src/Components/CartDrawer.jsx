@@ -73,7 +73,7 @@ const CartDrawer = ({
                 </div>
                 <div className="flex justify-between">
                   <h1>Tax : </h1>
-                  <h1 className="text-white">5%</h1>
+                  <h1 className="text-white">2%</h1>
                 </div>
               </div>
               <Divider className="bg-[#909090]" />
