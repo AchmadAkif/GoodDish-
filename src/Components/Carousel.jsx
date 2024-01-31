@@ -32,14 +32,14 @@ const Carousel = ({productData, handleAddToCart}) => {
   return (
     <Slider {...settings} className="bg-white p-5 rounded-[14px]">
       {productData.map( product => (
-        <div key={product.id} className="flex flex-col space-y-3 px-5 py-6 bg-[#eaeaea] rounded-md">
-          <h1 className="font-gilroyBold">{product.name}</h1>
-          <p className="font-gilroyMed">${product.price}</p>
-          <div className="flex">
-            {/* <Button icon={<MinusOutlined />} className="bg-white" onClick={handleReduceAmount} />
-            <input min={0} defaultValue={0} type="number" className="max-w-[35px] text-center outline-none font-gilroyMed bg-[#eaeaea]" />
-            <Button icon={<PlusOutlined />} className="bg-white" onClick={handleAddAmount} /> */}
+        <div key={product.id} className="!flex justify-between px-5 py-6 bg-[#eaeaea] rounded-md">
+          <div className="space-y-3 ">
+            <h1 className="font-gilroyBold">{product.name}</h1>
+            <p className="font-gilroyMed">${product.price}</p>
             <Button className="bg-[#ffffff] border-0 font-gilroyMed" onClick={() => onAdd(product)}>Add to Cart</Button>
+          </div>
+          <div>
+            <img src={product.img} alt="" className="max-h-[146px] w-[115px] rounded-md" />
           </div>
         </div>
       ))}
