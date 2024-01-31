@@ -39,7 +39,7 @@ const Carousel = ({productData, handleAddToCart}) => {
             <Button className="bg-[#ffffff] border-0 font-gilroyMed" onClick={() => onAdd(product)}>Add to Cart</Button>
           </div>
           <div>
-            <img src={product.img} alt="" className="max-h-[146px] w-[115px] rounded-md" />
+            <img src={product.img} alt="" className="h-[146px] w-[115px] rounded-md" />
           </div>
         </div>
       ))}
