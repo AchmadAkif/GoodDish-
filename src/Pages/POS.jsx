@@ -191,3 +191,9 @@ export const dataLoader = async () => {
 
   return res.json()
 }
+
+// export const dataLoader = async () => {
+//   const res = await fetch('http://localhost:3000/products')
+
+//   return res.json()
+// }
