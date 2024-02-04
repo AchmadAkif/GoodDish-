@@ -42,32 +42,40 @@
       {
         "id": 7,
         "name": "Roman Caesar",
-        "price": 5.00
+        "price": 5.00,
+        "img": "https://img.freepik.com/premium-photo/bass-fish-soup-assortment_23-2148950197.jpg?w=740"
       },
       {
         "id": 8,
         "name": "Gado-Gado",
-        "price": 5.00
+        "price": 5.00,
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ46xkovyobpbOx5AOHS7hunmKH56iIG0pQw&usqp=CAU"
       },
       {
         "id": 9,
         "name": "Salad Buah",
-        "price": 5.00
+        "price": 5.00,
+        "img": "https://img.freepik.com/free-photo/delicious-chickpea-potato-curry-with-beef-red-saucepan_181624-59659.jpg?w=826&t=st=1706712209~exp=1706712809~hmac=b613cbf924ed16b706374b1bd1912b32dc0bc76519cee8bc3507d876ae77f356"
       },
       {
         "id": 10,
         "name": "Roman Caesar",
-        "price": 5.00
+        "price": 5.00,
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ46xkovyobpbOx5AOHS7hunmKH56iIG0pQw&usqp=CAU"
       },
       {
         "id": 11,
         "name": "Roman Caesar",
-        "price": 5.00
+        "price": 5.00,
+        "img": "https://img.freepik.com/free-photo/delicious-chickpea-potato-curry-with-beef-red-saucepan_181624-59659.jpg?w=826&t=st=1706712209~exp=1706712809~hmac=b613cbf924ed16b706374b1bd1912b32dc0bc76519cee8bc3507d876ae77f356"
+
       },
       {
         "id": 12,
         "name": "Roman Caesar",
-        "price": 5.00
+        "price": 5.00,
+        "img": "https://img.freepik.com/free-photo/delicious-chickpea-potato-curry-with-beef-red-saucepan_181624-59659.jpg?w=826&t=st=1706712209~exp=1706712809~hmac=b613cbf924ed16b706374b1bd1912b32dc0bc76519cee8bc3507d876ae77f356"
+
       }
     ]
   }
