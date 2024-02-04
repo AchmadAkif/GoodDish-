@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 
 // Router
-import { useLoaderData } from "react-router-dom"
+// import { useLoaderData } from "react-router-dom"
 import { useOutletContext } from "react-router-dom"
 
 // Component
@@ -23,7 +23,7 @@ import CartDrawer from "../Components/CartDrawer"
 // }
 
 function POS() {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const [drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart, revenue, setRevenue] = useOutletContext()
   const [totalPrice, setTotalPrice] = useState()
@@ -35,9 +35,12 @@ function POS() {
   // Fetch Data
   useEffect(() => { 
     const fetchData = async () => {
-      const res = await fetch('http://localhost:3000/products')
+      setIsLoading(!isLoading)
+      // const res = await fetch('http://localhost:3000/products')
+      const res = await fetch('https://good-dish-json-server.vercel.app/products')
       const dataFetched = await res.json()
       setProductData(dataFetched)
+      setIsLoading(!isLoading)
     }
 
     fetchData()
@@ -159,11 +162,11 @@ function POS() {
     <div className="space-y-[20px]">
       <div>
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Soups</h1>
-        {productData && <Carousel handleAddToCart={handleAddToCart} productData={productData.soups} /> }
+        {productData && <Carousel isLoading={isLoading} handleAddToCart={handleAddToCart} productData={productData.soups} /> }
       </div>
       <div>
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Salads</h1>
-        {productData && <Carousel handleAddToCart={handleAddToCart} productData={productData.salads} /> }
+        {productData && <Carousel isLoading={isLoading} handleAddToCart={handleAddToCart} productData={productData.salads} /> }
       </div>
       <CartDrawer 
         subtotalPrice={subtotalPrice} 
