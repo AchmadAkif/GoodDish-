@@ -41,19 +41,21 @@ function RootLayout() {
       }}
     >
       <Layout>
-        <Sider
-          style={
-            {
-            overflow: 'auto',
-            height: '100vh',
-            position: 'fixed',
-            left: 0,
-            top: 0,
-            bottom: 0,
-            background: '#000000'
-          }}>
-          <Menu 
-            className='font-gilroyMed bg-black'  
+      <Sider
+        breakpoint="lg"
+        collapsedWidth="0"
+        style={{
+          height: "100vh"
+        }}
+        onBreakpoint={(broken) => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }}
+      >
+        <Menu 
+            className='h-full font-gilroyMed bg-black'  
             items={[
               {label: "Home", key:"/"},
               {label: "Food & Drinks", key:"POS"},
@@ -66,21 +68,25 @@ function RootLayout() {
               navigate(key)
             }}>
           </Menu>
-        </Sider>
-        <Layout className='site-layout' style={{marginLeft: 200}}>
-          <Header
+      </Sider>
+      <Layout>
+        <Header
           style={{
-            position: "sticky",
-            top: "0"
-          }} 
-          className='bg-white'>
-            <Navbar showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} productOnCart={productOnCart} />
-          </Header>
-          <Content className='h-[100vh] px-[20px] py-10'>
-            <Outlet context={[drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart]} />  
-          </Content>
-        </Layout>
+            padding: 0,
+            background: "#fff",
+          }}
+        >
+          <Navbar showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} productOnCart={productOnCart} />
+        </Header>
+        <Content
+          style={{
+            margin: '24px 16px 0',
+          }}
+        >
+          <Outlet context={[drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart]} />  
+        </Content>
       </Layout>
+    </Layout>
     </ConfigProvider>
   )
 }

@@ -9,14 +9,16 @@ function Navbar({ drawerIsOpen, setDrawerIsOpen, showCartBtn, productOnCart }) {
   }
 
   return (
-    <div className='flex justify-between items-center font-gilroyBold'>
+    <div className='flex px-5 justify-between items-center font-gilroyBold'>
       <h1 className="text-[25px]">GoodDish!</h1>
       <div className='space-x-3'>
-        <input type="text" placeholder="Type to search" className="h-[30px] outline-none bg-[#eaeaea] rounded-2xl px-3 font-gilroyMed" />
         { showCartBtn ?
+          <>
+          <input type="text" placeholder="Type to search" className="h-[30px] outline-none bg-[#eaeaea] rounded-2xl px-3 font-gilroyMed" />
           <Badge count={productOnCart.length}>
             <Button className='bg-[#eaeaea] border-0 shadow-none' shape='circle' icon={<ShoppingCartOutlined/>} onClick={handleClick} />
           </Badge>
+          </>
           : null }
       </div>
     </div>

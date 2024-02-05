@@ -27,8 +27,8 @@ const CartDrawer = ({
         color: "#fff",
       }}
       bodyStyle={{
-        paddingLeft: 10,
-        paddingRight: 10,
+        paddingLeft: 16,
+        paddingRight: 16,
       }}
       title="Current Order" 
       placement="right" 
@@ -64,7 +64,7 @@ const CartDrawer = ({
         </div>
 
         {productOnCart.length > 0
-        ? 
+        ? <>
           <div className="w-[100%] px-5 py-4 bg-[#121212] rounded-md font-gilroyMed text-[16px] text-[#909090]">
               <div className="space-y-2">
                 <div className="flex justify-between">
@@ -82,19 +82,18 @@ const CartDrawer = ({
                 <h1 className="text-[18px] text-white">{totalPrice > 0 ? `$${totalPrice}` : ''}</h1>
               </div>
           </div>
+          
+          <div className="flex flex-col justify-center items-center">
+            <Radio.Group defaultValue="a" buttonStyle="solid" optionType="button" className="py-5">
+              <Radio.Button value="a" className="font-gilroyBold">Cash</Radio.Button>
+              <Radio.Button value="b" className="font-gilroyBold">Debit</Radio.Button>
+              <Radio.Button value="c" className="font-gilroyBold">E-Wallet</Radio.Button>
+            </Radio.Group>
+        
+            <Button className="w-full h-[60px] bg-white font-gilroyBold text-[16px] text-black" type="primary">Place Order</Button>  
+          </div>
+          </>
         : null}
-
-        <div className="flex flex-col justify-center items-center">
-          <Radio.Group defaultValue="a" buttonStyle="solid" optionType="button" className="py-5">
-            <Radio.Button value="a" className="font-gilroyBold">Cash</Radio.Button>
-            <Radio.Button value="b" className="font-gilroyBold">Debit</Radio.Button>
-            <Radio.Button value="c" className="font-gilroyBold">E-Wallet</Radio.Button>
-          </Radio.Group>
-        
-          <Button className="w-full h-[60px] bg-white font-gilroyBold text-[16px] text-black" type="primary">Place Order</Button>  
-        </div>
-
-        
       </Drawer>
   )
 }
