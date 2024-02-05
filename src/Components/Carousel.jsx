@@ -31,13 +31,8 @@ const Carousel = ({isLoading, productData, handleAddToCart}) => {
 
   return (
     <Slider {...settings} className="bg-white p-5 rounded-[14px]">
-      {productData.map( product => (
-        isLoading
-        ? <div className="!flex justify-between px-5 py-6 bg-[#eaeaea] rounded-md">
-            <Skeleton active />
-          </div>
-        
-        : <div key={product.id} className="!flex justify-between px-5 py-6 bg-[#eaeaea] rounded-md">
+      { productData.map( product => (
+          <div key={product.id} className="!flex justify-between px-5 py-6 bg-[#eaeaea] rounded-md">
             <div className="space-y-3 ">
               <h1 className="font-gilroyBold">{product.name}</h1>
               <p className="font-gilroyMed">${product.price}</p>
@@ -47,7 +42,8 @@ const Carousel = ({isLoading, productData, handleAddToCart}) => {
               <img src={product.img} alt="" className="h-[146px] w-[115px] rounded-md" />
             </div>
           </div>
-      ))}
+        ))
+      }
     </Slider>
   )
 }
