@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 
 // Router
-import { useLoaderData } from "react-router-dom"
+// import { useLoaderData } from "react-router-dom"
 import { useOutletContext } from "react-router-dom"
 
 // Component
@@ -10,26 +10,29 @@ import Carousel from "../Components/Carousel"
 import CartDrawer from "../Components/CartDrawer"
 import { Skeleton } from "antd"
 
-// Loader
-export const dataLoader = async () => {
-  const res = await fetch('https://good-dish-json-server.vercel.app/products')
-  //   const res = await fetch('http://localhost:3000/products')
+// // Loader
+// export const dataLoader = async () => {
+//   const res = await fetch('https://good-dish-json-server.vercel.app/products')
+//   const res = await fetch('http://localhost:3000/products')
+//   const data = await res.json()
 
-  return res.json()
-}
-
+//   return data
+// }
 
 function POS() {
   const [searchKeyword, drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart, revenue, setRevenue] = useOutletContext()
   const [totalPrice, setTotalPrice] = useState()
   const [subtotalPrice, setSubtotalPrice] = useState()
   const [productData, setProductData] = useState()
+  // const data = useLoaderData()
 
-  const data = useLoaderData()
 
-  // For loading effect
+  // Fetch 
   useEffect(() => {
-    const populateState = () => {
+    const populateState = async () => {
+      const res = await fetch('https://good-dish-json-server.vercel.app/products')
+      // const res = await fetch('http://localhost:3000/products')
+      const data = await res.json()
       setProductData(data)
     }
 

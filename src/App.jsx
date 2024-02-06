@@ -7,7 +7,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import RootLayout from "./Layouts/RootLayout"
 import Home from "./Pages/Home"
 import POS from "./Pages/POS"
-import { dataLoader } from "./Pages/POS"
+// import { dataLoader } from "./Pages/POS"
 import About from "./Pages/About"
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route 
           path="POS" 
           element={<POS />}
-          loader={dataLoader}
+          // loader={dataLoader}
           ></Route>
         <Route path="about" element={<About />}></Route>
       </Route>
