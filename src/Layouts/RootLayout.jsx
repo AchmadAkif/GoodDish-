@@ -17,6 +17,8 @@ function RootLayout() {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false)
   const isShowCartBtn = location.pathname === '/POS'
   
+  // Global State
+  const [searchKeyword, setSearchKeyword] = useState('')
   const [productOnCart, setProductOnCart] = useState([])
   
   return (
@@ -76,14 +78,14 @@ function RootLayout() {
             background: "#fff",
           }}
         >
-          <Navbar showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} productOnCart={productOnCart} />
+          <Navbar setSearchKeyword={setSearchKeyword} showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} productOnCart={productOnCart} />
         </Header>
         <Content
           style={{
             margin: '24px 16px 0',
           }}
         >
-          <Outlet context={[drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart]} />  
+          <Outlet context={[searchKeyword, drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart]} />  
         </Content>
       </Layout>
     </Layout>

@@ -3,14 +3,14 @@
 
 // Antd
 // import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
-import { Button, Skeleton } from "antd";
+import { Button } from "antd";
 
 // React-Slick
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-const Carousel = ({isLoading, productData, handleAddToCart}) => {
+const Carousel = ({searchKeyword, productData, handleAddToCart}) => {
   
   const onAdd = (product) => {
     handleAddToCart(product)
@@ -57,7 +57,11 @@ const Carousel = ({isLoading, productData, handleAddToCart}) => {
 
   return (
     <Slider {...settings} className="bg-white p-5 rounded-[14px]">
-      { productData.map( product => (
+      { productData.filter((item) => {
+        return searchKeyword.toLowerCase() === ''
+        ? item
+        : item.name.toLowerCase().includes(searchKeyword)
+      }).map( product => (
           <div key={product.id} className="!flex justify-between px-5 py-6 bg-[#eaeaea] rounded-md">
             <div className="space-y-3 ">
               <h1 className="font-gilroyBold">{product.name}</h1>

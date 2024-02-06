@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 
 // Router
-// import { useLoaderData } from "react-router-dom"
+import { useLoaderData } from "react-router-dom"
 import { useOutletContext } from "react-router-dom"
 
 // Component
@@ -11,40 +11,29 @@ import CartDrawer from "../Components/CartDrawer"
 import { Skeleton } from "antd"
 
 // Loader
-// export const dataLoader = async () => {
-//   const res = await fetch('https://good-dish-json-server.vercel.app/products')
+export const dataLoader = async () => {
+  const res = await fetch('https://good-dish-json-server.vercel.app/products')
+  //   const res = await fetch('http://localhost:3000/products')
 
-//   return res.json()
-// }
+  return res.json()
+}
 
-// export const dataLoader = async () => {
-//   const res = await fetch('http://localhost:3000/products')
-
-//   return res.json()
-// }
 
 function POS() {
-  const [isLoading, setIsLoading] = useState(false)
-
-  const [drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart, revenue, setRevenue] = useOutletContext()
+  const [searchKeyword, drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart, revenue, setRevenue] = useOutletContext()
   const [totalPrice, setTotalPrice] = useState()
   const [subtotalPrice, setSubtotalPrice] = useState()
-
   const [productData, setProductData] = useState()
-  // const productData = useLoaderData()
 
-  // Fetch Data
-  useEffect(() => { 
-    const fetchData = async () => {
-      setIsLoading(true)
-      // const res = await fetch('http://localhost:3000/products')
-      const res = await fetch('https://good-dish-json-server.vercel.app/products')
-      const dataFetched = await res.json()
-      setProductData(dataFetched)
-      setIsLoading(false)
+  const data = useLoaderData()
+
+  // For loading effect
+  useEffect(() => {
+    const populateState = () => {
+      setProductData(data)
     }
-    console.log('tes')
-    fetchData()
+
+    populateState()
   },[])
 
   useEffect(() => {
@@ -163,11 +152,11 @@ function POS() {
     <div className="space-y-[20px]">
       <div>
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Soups</h1>
-        {productData ? <Carousel isLoading={isLoading} handleAddToCart={handleAddToCart} productData={productData.soups} /> : <Skeleton active />}
+        {productData ? <Carousel searchKeyword={searchKeyword} handleAddToCart={handleAddToCart} productData={productData.soups} /> : <Skeleton active />}
       </div>
       <div>
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Salads</h1>
-        {productData ? <Carousel isLoading={isLoading} handleAddToCart={handleAddToCart} productData={productData.salads} /> : <Skeleton active />}
+        {productData ? <Carousel searchKeyword={searchKeyword} handleAddToCart={handleAddToCart} productData={productData.salads} /> : <Skeleton active />}
       </div>
       <CartDrawer 
         subtotalPrice={subtotalPrice} 
