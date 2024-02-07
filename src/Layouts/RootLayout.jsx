@@ -2,7 +2,7 @@ import { useState } from 'react'
 // Router
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 // Antd
-import { ConfigProvider, Layout, Menu } from 'antd';
+import { ConfigProvider, Layout, Menu, Divider } from 'antd';
 const { Header, Content, Sider } = Layout;
 // Pages
 import Navbar from '../Components/Navbar';
@@ -44,10 +44,12 @@ function RootLayout() {
     >
       <Layout>
       <Sider
+        width="250px"
         breakpoint="lg"
         collapsedWidth="0"
         style={{
-          height: "100vh"
+          height: "100vh",
+          background: "#000",
         }}
         onBreakpoint={(broken) => {
           console.log(broken);
@@ -56,20 +58,37 @@ function RootLayout() {
           console.log(collapsed, type);
         }}
       >
+        <div className='h-[10%] flex items-center justify-center bg-[#121212]'>
+          <h1 className='text-white text-[30px] font-gilroyBold'>GoodDish!</h1>
+        </div>
         <Menu 
-            className='h-full font-gilroyMed bg-black'  
-            items={[
-              {label: "Home", key:"/"},
-              {label: "Food & Drinks", key:"POS"},
-              {label: "About", key:"about"},   
+          className='h-[65%] font-gilroyMed text-[16px] bg-black'  
+          items={[
+            {label: "Home", key:"/"},
+            {label: "Food & Drinks", key:"POS"},
+            {label: "About", key:"about"},   
+            {label: "Messages"},
+            {label: "Bills"},
 
-              {label: "Setting"},
-              {label: "Help"}
-            ]}
-            onClick={({ key }) => {
-              navigate(key)
-            }}>
-          </Menu>
+            {label: "Setting"},
+            {label: "Help"}
+          ]}
+          onClick={({ key }) => {
+            navigate(key)
+          }}>
+        </Menu>
+          <div className='h-[25%] flex flex-col justify-between bg-[#121212] pl-4 py-6 space-y-[15px]'>
+            <div className='flex items-center'>
+              <h1 className='text-white text-[18px] font-gilroyBold'>GoodDish!</h1>
+              <Divider type='vertical' style={{borderLeft: "1px solid #909090"}} />
+              <h1 className='text-white text-[18px] font-gilroyReg'>POS</h1>
+            </div>
+            <div className='flex space-x-5'>
+              <a href="#" className='text-white font-gilroyMed'>Legal Center</a>
+              <a href="#" className='text-white font-gilroyMed'>Support</a>
+            </div>
+            <p className='text-[#909090] text-[12px] font-gilroyReg'>GoodDish! and GoodDish! POS is a registered brandmark of GoodDish! Inc 2024</p>
+          </div>
       </Sider>
       <Layout>
         <Header

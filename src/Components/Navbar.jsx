@@ -13,8 +13,7 @@ function Navbar({ setSearchKeyword, drawerIsOpen, setDrawerIsOpen, showCartBtn, 
   }
 
   return (
-    <div className='flex px-5 justify-between items-center font-gilroyBold'>
-      <h1 className="text-[25px]">GoodDish!</h1>
+    <div className='flex px-5 justify-end items-center font-gilroyBold'>
       <div className='space-x-3'>
         { showCartBtn ?
           <>

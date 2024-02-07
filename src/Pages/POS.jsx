@@ -23,20 +23,32 @@ function POS() {
   const [searchKeyword, drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart, revenue, setRevenue] = useOutletContext()
   const [totalPrice, setTotalPrice] = useState()
   const [subtotalPrice, setSubtotalPrice] = useState()
-  const [productData, setProductData] = useState()
+  const [productData, setProductData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
   // const data = useLoaderData()
 
 
   // Fetch 
   useEffect(() => {
-    const populateState = async () => {
-      const res = await fetch('https://good-dish-json-server.vercel.app/products')
-      // const res = await fetch('http://localhost:3000/products')
-      const data = await res.json()
-      setProductData(data)
-    }
-
-    populateState()
+      fetch('https://good-dish-json-server.vercel.app/products')
+      // fetch('http://localhost:3000/products')
+      .then(res => {
+        if(!res.ok) {
+          if(res.status === 404) {
+            throw Error('URL doesnt exist')
+          }
+        }
+        console.log(res)
+        return res.json()
+      })
+      .then(data => {
+        setProductData(data)
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
   },[])
 
   useEffect(() => {
@@ -155,11 +167,13 @@ function POS() {
     <div className="space-y-[20px]">
       <div>
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Soups</h1>
-        {productData ? <Carousel searchKeyword={searchKeyword} handleAddToCart={handleAddToCart} productData={productData.soups} /> : <Skeleton active />}
+        {isLoading && <Skeleton active />}
+        {productData && <Carousel searchKeyword={searchKeyword} handleAddToCart={handleAddToCart} productData={productData.soups} />}
       </div>
       <div>
         <h1 className="font-gilroyBold text-[18px] pl-[30px] mb-3">Salads</h1>
-        {productData ? <Carousel searchKeyword={searchKeyword} handleAddToCart={handleAddToCart} productData={productData.salads} /> : <Skeleton active />}
+        {isLoading && <Skeleton active />}
+        {productData && <Carousel searchKeyword={searchKeyword} handleAddToCart={handleAddToCart} productData={productData.salads} />}
       </div>
       <CartDrawer 
         subtotalPrice={subtotalPrice} 
