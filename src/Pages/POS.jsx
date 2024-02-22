@@ -1,55 +1,35 @@
 // React
 import { useEffect, useState } from "react"
 
-// Router
-// import { useLoaderData } from "react-router-dom"
-import { useOutletContext } from "react-router-dom"
-
 // Component
 import Carousel from "../Components/Carousel"
 import CartDrawer from "../Components/CartDrawer"
 import { Skeleton } from "antd"
 
-// // Loader
-// export const dataLoader = async () => {
-//   const res = await fetch('https://good-dish-json-server.vercel.app/products')
-//   const res = await fetch('http://localhost:3000/products')
-//   const data = await res.json()
+// Hooks
+import { useOutletContext } from "react-router-dom"
+import useFetch from "../Hooks/useFetch"
 
-//   return data
-// }
 
 function POS() {
-  const [searchKeyword, drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart, revenue, setRevenue] = useOutletContext()
+  const [
+    searchKeyword, 
+    drawerIsOpen, 
+    setDrawerIsOpen, 
+    productOnCart, 
+    setProductOnCart, 
+    revenue, 
+    setRevenue,
+    itemSold,
+    setItemSold
+  ] = useOutletContext()
   const [totalPrice, setTotalPrice] = useState()
   const [subtotalPrice, setSubtotalPrice] = useState()
-  const [productData, setProductData] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
 
   // const data = useLoaderData()
 
-
   // Fetch 
-  useEffect(() => {
-      fetch('https://good-dish-json-server.vercel.app/products')
-      // fetch('http://localhost:3000/products')
-      .then(res => {
-        if(!res.ok) {
-          if(res.status === 404) {
-            throw Error('URL doesnt exist')
-          }
-        }
-        console.log(res)
-        return res.json()
-      })
-      .then(data => {
-        setProductData(data)
-        setIsLoading(false)
-      })
-      .catch(err => {
-        console.log(err.message)
-      })
-  },[])
+  const { data: productData, isLoading } = useFetch('https://good-dish-json-server.vercel.app/products')
 
   useEffect(() => {
     let total = 0
@@ -63,6 +43,7 @@ function POS() {
     productOnCart.forEach(product => {
       sub += (product.price * product.amount)
     })
+
     setSubtotalPrice(sub)
     calculateTax(sub)
 
@@ -163,6 +144,20 @@ function POS() {
     }
   }
 
+  const handlePlaceOrder = () => {
+    
+    let quantity = 0
+    
+    productOnCart.forEach(product => {
+      quantity += product.amount
+    })
+    
+    setItemSold(itemSold + quantity)
+    setRevenue(subtotalPrice)
+    setProductOnCart([])
+
+  }
+
   return (
     <div className="space-y-[20px]">
       <div>
@@ -182,13 +177,14 @@ function POS() {
         drawerIsOpen={drawerIsOpen} 
         productOnCart={productOnCart} 
         onAddAmount={handleAddAmount} 
-        // onAmountChange={handleAmountChange}
         onRemoveAmount={handleRemoveAmount} 
         onRemoveProduct={handleRemoveProduct} 
+        onPlaceOrder={handlePlaceOrder}
+        // onAmountChange={handleAmountChange}
         // amount={amount}
         // setAmount={setAmount}
-        revenue={revenue}
-        setRevenue={setRevenue}
+        // revenue={revenue}
+        // setRevenue={setRevenue}
       />
     </div>
   )

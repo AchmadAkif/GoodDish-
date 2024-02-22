@@ -16,7 +16,8 @@ const CartDrawer = ({
   productOnCart, 
   onRemoveProduct, 
   onAddAmount, 
-  onRemoveAmount
+  onRemoveAmount,
+  onPlaceOrder
 
   }) => {
   
@@ -90,7 +91,7 @@ const CartDrawer = ({
               <Radio.Button value="c" className="font-gilroyBold">E-Wallet</Radio.Button>
             </Radio.Group>
         
-            <Button className="w-full h-[60px] bg-white font-gilroyBold text-[16px] text-black" type="primary">Place Order</Button>  
+            <Button className="w-full h-[60px] bg-white font-gilroyBold text-[16px] text-black" type="primary" onClick={() => onPlaceOrder()}>Place Order</Button>  
           </div>
           </>
         : null}

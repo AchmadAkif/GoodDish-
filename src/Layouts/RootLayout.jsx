@@ -15,11 +15,13 @@ function RootLayout() {
   
   // Controlling POS Drawer
   const [drawerIsOpen, setDrawerIsOpen] = useState(false)
-  const isShowCartBtn = location.pathname === '/POS'
+  const isOnLocation = location.pathname === '/POS'
   
   // Global State
   const [searchKeyword, setSearchKeyword] = useState('')
   const [productOnCart, setProductOnCart] = useState([])
+  const [revenue, setRevenue] = useState(0)
+  const [itemSold, setItemSold] = useState(0)
   
   return (
     <ConfigProvider
@@ -29,6 +31,7 @@ function RootLayout() {
             itemColor: "#909090", 
             itemHoverColor: "#fff",
             itemHoverBg: "#121212", 
+            itemDisabledColor: "#525252",
           },
           Radio: {
             buttonBg: "#1F1F1F",
@@ -58,26 +61,29 @@ function RootLayout() {
           console.log(collapsed, type);
         }}
       >
-        <div className='h-[10%] flex items-center justify-center bg-[#121212]'>
-          <h1 className='text-white text-[30px] font-gilroyBold'>GoodDish!</h1>
-        </div>
-        <Menu 
-          className='h-[65%] font-gilroyMed text-[16px] bg-black'  
-          items={[
-            {label: "Home", key:"/"},
-            {label: "Food & Drinks", key:"POS"},
-            {label: "About", key:"about"},   
-            {label: "Messages"},
-            {label: "Bills"},
+        <div className='h-[100vh] flex flex-col justify-between'>
+          <div>
+          <div className='h-[100px] flex items-center justify-center bg-[#121212]'>
+            <h1 className='text-white text-[30px] font-gilroyBold'>GoodDish!</h1>
+          </div>
+          <Menu 
+            className='font-gilroyMed text-[18px] bg-black'  
+            items={[
+              {label: "Home", key:"/"},
+              {label: "Food & Drinks", key:"POS"},
+              {label: "About", key:"about"},   
+              {label: "Messages", disabled: true},
+              {label: "Bills", disabled: true},
 
-            {label: "Setting"},
-            {label: "Help"}
-          ]}
-          onClick={({ key }) => {
-            navigate(key)
-          }}>
-        </Menu>
-          <div className='h-[25%] flex flex-col justify-between bg-[#121212] pl-4 py-6 space-y-[15px]'>
+              {label: "Setting", disabled: true},
+              {label: "Help", disabled: true}
+            ]}
+            onClick={({ key }) => {
+              navigate(key)
+            }}>
+          </Menu>
+          </div>
+          <div className='flex flex-col justify-between bg-[#121212] pl-4 py-6 space-y-[15px]'>
             <div className='flex items-center'>
               <h1 className='text-white text-[18px] font-gilroyBold'>GoodDish!</h1>
               <Divider type='vertical' style={{borderLeft: "1px solid #909090"}} />
@@ -89,6 +95,7 @@ function RootLayout() {
             </div>
             <p className='text-[#909090] text-[12px] font-gilroyReg'>GoodDish! and GoodDish! POS is a registered brandmark of GoodDish! Inc 2024</p>
           </div>
+        </div>
       </Sider>
       <Layout>
         <Header
@@ -97,14 +104,24 @@ function RootLayout() {
             background: "#fff",
           }}
         >
-          <Navbar setSearchKeyword={setSearchKeyword} showCartBtn={isShowCartBtn} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} productOnCart={productOnCart} />
+          <Navbar setSearchKeyword={setSearchKeyword} showCartBtn={isOnLocation} drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} productOnCart={productOnCart} />
         </Header>
         <Content
           style={{
             margin: '24px 16px 0',
           }}
         >
-          <Outlet context={[searchKeyword, drawerIsOpen, setDrawerIsOpen, productOnCart, setProductOnCart]} />  
+          <Outlet context={[
+            searchKeyword, 
+            drawerIsOpen, 
+            setDrawerIsOpen, 
+            productOnCart, 
+            setProductOnCart, 
+            revenue, 
+            setRevenue,
+            itemSold,
+            setItemSold
+            ]} />  
         </Content>
       </Layout>
     </Layout>
