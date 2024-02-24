@@ -1,11 +1,19 @@
+// React
 import { useState } from 'react'
+
 // Router
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
+
 // Antd
 import { ConfigProvider, Layout, Menu, Divider } from 'antd';
 const { Header, Content, Sider } = Layout;
+
 // Pages
 import Navbar from '../Components/Navbar';
+
+// Utils
+import { ToastContainer } from 'react-toastify';
+import notify from '../utils/toastify';
 
 
 function RootLayout() {
@@ -120,8 +128,10 @@ function RootLayout() {
             revenue, 
             setRevenue,
             itemSold,
-            setItemSold
+            setItemSold,
+            notify
             ]} />  
+          <ToastContainer/>
         </Content>
       </Layout>
     </Layout>

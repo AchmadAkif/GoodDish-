@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { notifyError } from "../utils/toastify"
 
 const useFetch = (url) => {
   const [data, setData] = useState(null)
@@ -11,7 +12,7 @@ const useFetch = (url) => {
       if(!res.ok) {
         if(res.status === 404) {
           throw Error('URL doesnt exist')
-        }
+        } 
       }
       console.log(res)
       return res.json()
@@ -21,6 +22,7 @@ const useFetch = (url) => {
       setIsLoading(false)
     })
     .catch(err => {
+      notifyError("Failed to fetch")
       console.log(err.message)
     })
   },[url])

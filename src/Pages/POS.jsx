@@ -12,25 +12,7 @@ import useFetch from "../Hooks/useFetch"
 
 
 function POS() {
-  const [
-    searchKeyword, 
-    drawerIsOpen, 
-    setDrawerIsOpen, 
-    productOnCart, 
-    setProductOnCart, 
-    revenue, 
-    setRevenue,
-    itemSold,
-    setItemSold
-  ] = useOutletContext()
-  const [totalPrice, setTotalPrice] = useState()
-  const [subtotalPrice, setSubtotalPrice] = useState()
-
-  // const data = useLoaderData()
-
-  // Fetch 
-  const { data: productData, isLoading } = useFetch('https://good-dish-json-server.vercel.app/products')
-
+  
   useEffect(() => {
     let total = 0
     let sub = 0
@@ -48,6 +30,24 @@ function POS() {
     calculateTax(sub)
 
   })
+
+  const [
+    searchKeyword, 
+    drawerIsOpen, 
+    setDrawerIsOpen, 
+    productOnCart, 
+    setProductOnCart, 
+    revenue, 
+    setRevenue,
+    itemSold,
+    setItemSold,
+    notify
+  ] = useOutletContext()
+  const [totalPrice, setTotalPrice] = useState()
+  const [subtotalPrice, setSubtotalPrice] = useState()
+
+  // Fetch 
+  const { data: productData, isLoading } = useFetch('https://good-dish-json-server.vercel.app/products')
   
   const onClose = () => {
     setDrawerIsOpen(false)
@@ -143,7 +143,7 @@ function POS() {
       setProductOnCart(newCart)
     }
   }
-
+  
   const handlePlaceOrder = () => {
     
     let quantity = 0
@@ -152,11 +152,12 @@ function POS() {
       quantity += product.amount
     })
     
+    notify("Order Success!")
     setItemSold(itemSold + quantity)
     setRevenue(subtotalPrice)
     setProductOnCart([])
-
   }
+
 
   return (
     <div className="space-y-[20px]">
