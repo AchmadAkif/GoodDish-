@@ -147,14 +147,15 @@ function POS() {
   const handlePlaceOrder = () => {
     
     let quantity = 0
-    
+    let currentRevenue = 
+
     productOnCart.forEach(product => {
       quantity += product.amount
     })
     
     notify("Order Success!")
     setItemSold(itemSold + quantity)
-    setRevenue(subtotalPrice)
+    setRevenue(revenue + subtotalPrice)
     setProductOnCart([])
   }
 

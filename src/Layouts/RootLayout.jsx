@@ -13,7 +13,7 @@ import Navbar from '../Components/Navbar';
 
 // Utils
 import { ToastContainer } from 'react-toastify';
-import notify from '../utils/toastify';
+import {notifySuccess, notifyError} from '../utils/toastify';
 
 
 function RootLayout() {
@@ -129,7 +129,8 @@ function RootLayout() {
             setRevenue,
             itemSold,
             setItemSold,
-            notify
+            notifySuccess,
+            notifyError
             ]} />  
           <ToastContainer/>
         </Content>
