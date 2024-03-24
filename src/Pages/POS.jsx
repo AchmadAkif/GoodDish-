@@ -147,7 +147,6 @@ function POS() {
   const handlePlaceOrder = () => {
     
     let quantity = 0
-    let currentRevenue = 
 
     productOnCart.forEach(product => {
       quantity += product.amount
