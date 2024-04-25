@@ -41,7 +41,7 @@ function POS() {
     setRevenue,
     itemSold,
     setItemSold,
-    notify
+    notifySuccess
   ] = useOutletContext()
   const [totalPrice, setTotalPrice] = useState()
   const [subtotalPrice, setSubtotalPrice] = useState()
@@ -152,7 +152,7 @@ function POS() {
       quantity += product.amount
     })
     
-    notify("Order Success!")
+    notifySuccess("Order Success!")
     setItemSold(itemSold + quantity)
     setRevenue(revenue + subtotalPrice)
     setProductOnCart([])

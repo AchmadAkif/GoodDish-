@@ -18,7 +18,7 @@ function Home() {
   ] = useOutletContext()
 
   return (
-    <div className='w-full space-x-5 flex'>
+    <div className='w-full space-y-5 sm:space-y-0 sm:space-x-5 sm:flex'>
       <div className='max-w-[350px] min-w-[250px] p-5 bg-white font-gilroyBold text-[18px] rounded-xl shadow-md space-y-6'>
         <DollarOutlined style={{
           fontSize: 25

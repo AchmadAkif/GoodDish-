@@ -14,7 +14,7 @@ function Navbar({ setSearchKeyword, drawerIsOpen, setDrawerIsOpen, showCartBtn, 
 
   return (
       <>
-        { showCartBtn 
+        { showCartBtn
 
           ?
             <div className='flex px-5 justify-end items-center font-gilroyBold'>
