@@ -1,0 +1,8 @@
+# IGNORE THESE FOLDERS
+public
+
+# IGNORE THESE FILES
+**/*.html
+**/*.md
+**/*.json
+**/*.yaml
