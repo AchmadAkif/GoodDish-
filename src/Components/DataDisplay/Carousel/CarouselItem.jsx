@@ -1,6 +1,6 @@
 import { Button } from "antd";
 
-const ItemCard = ({ product, handleAddToCart }) => {
+const CarouselItem = ({ product, handleAddToCart }) => {
   return (
     <div
       className="!flex justify-between px-5 py-6 bg-[#eaeaea] rounded-md"
@@ -24,4 +24,4 @@ const ItemCard = ({ product, handleAddToCart }) => {
   );
 };
 
-export default ItemCard;
+export default CarouselItem;

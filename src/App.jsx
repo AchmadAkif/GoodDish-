@@ -1,6 +1,3 @@
-// import { useState } from 'react'
-
-// Router
 import {
   Route,
   RouterProvider,
@@ -8,7 +5,6 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-// Pages
 import RootLayout from './Layouts/RootLayout';
 import Home from './Pages/Home';
 import POS from './Pages/POS';

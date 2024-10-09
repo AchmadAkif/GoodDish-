@@ -2,7 +2,7 @@ import { Drawer } from 'antd';
 import { style, bodyStyle } from './CartDrawer.style';
 
 import ItemList from './ItemList/ItemList.component';
-import PriceTable from './PriceTable/PriceTable';
+import PriceTable from '../PriceTable/PriceTable';
 
 const CartDrawer = ({
   subtotalPrice,

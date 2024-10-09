@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import ItemCard from './ItemCard';
+import CarouselItem from './CarouselItem';
 
 const Carousel = ({ searchKeyword, productData, handleAddToCart }) => {
 
@@ -16,7 +16,7 @@ const Carousel = ({ searchKeyword, productData, handleAddToCart }) => {
   return (
     <Slider {...styles} className="bg-white p-5 rounded-[14px]">
       {filteredData().map((product) => (
-        <ItemCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
+        <CarouselItem key={product.id} product={product} handleAddToCart={handleAddToCart} />
       ))}
     </Slider>
   );
