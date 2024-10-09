@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import { Drawer } from 'antd';
 import { style, bodyStyle } from './CartDrawer.style';
 
 import ItemList from './ItemList/ItemList.component';
 import PriceTable from '../PriceTable/PriceTable';
+import useCalculateTax from '../../../Hooks/useCalculateTax';
 
 const CartDrawer = ({
-  subtotalPrice,
-  totalPrice,
-  onClose,
+  onClickDrawer,
   drawerIsOpen,
   productOnCart,
   onRemoveProduct,
@@ -15,6 +15,7 @@ const CartDrawer = ({
   onRemoveAmount,
   onPlaceOrder,
 }) => {
+  const { subtotalPrice, totalPrice } = useCalculateTax(productOnCart,);
 
   return (
     <Drawer
@@ -23,7 +24,7 @@ const CartDrawer = ({
       title="Current Order"
       placement="right"
       closeIcon={false}
-      onClose={onClose}
+      onClose={onClickDrawer}
       open={drawerIsOpen}
       className="font-gilroyMed"
     >

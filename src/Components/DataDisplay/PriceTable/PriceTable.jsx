@@ -27,7 +27,7 @@ const PriceTable = ({ subtotalPrice, totalPrice, onPlaceOrder }) => {
         </div>
       </div>
 
-      <RadioGroup onPlaceOrder={onPlaceOrder} />
+      <RadioGroup onPlaceOrder={() => onPlaceOrder(subtotalPrice)} />
     </>
   );
 };

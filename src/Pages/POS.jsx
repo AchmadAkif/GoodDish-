@@ -11,27 +11,11 @@ import { useOutletContext } from 'react-router-dom';
 import useFetch from '../Hooks/useFetch';
 
 function POS() {
-  useEffect(() => {
-    let total = 0;
-    let sub = 0;
-
-    const calculateTax = (totalAmount) => {
-      total += sub + totalAmount * (2 / 100);
-      setTotalPrice(total);
-    };
-
-    productOnCart.forEach((product) => {
-      sub += product.price * product.amount;
-    });
-
-    setSubtotalPrice(sub);
-    calculateTax(sub);
-  });
 
   const [
     searchKeyword,
     drawerIsOpen,
-    setDrawerIsOpen,
+    onClickDrawer,
     productOnCart,
     setProductOnCart,
     revenue,
@@ -40,17 +24,12 @@ function POS() {
     setItemSold,
     notifySuccess,
   ] = useOutletContext();
-  const [totalPrice, setTotalPrice] = useState();
-  const [subtotalPrice, setSubtotalPrice] = useState();
+
 
   // Fetch
   const { data: productData, isLoading } = useFetch(
     'https://good-dish-json-server.vercel.app/products',
   );
-
-  const onClose = () => {
-    setDrawerIsOpen(false);
-  };
 
   const handleAddToCart = (product) => {
     let checkProductIsExist = productOnCart.find(
@@ -141,7 +120,7 @@ function POS() {
     }
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = (subtotalPrice) => {
     let quantity = 0;
 
     productOnCart.forEach((product) => {
@@ -179,9 +158,7 @@ function POS() {
         )}
       </div>
       <CartDrawer
-        subtotalPrice={subtotalPrice}
-        totalPrice={totalPrice}
-        onClose={onClose}
+        onClickDrawer={onClickDrawer}
         drawerIsOpen={drawerIsOpen}
         productOnCart={productOnCart}
         onAddAmount={handleAddAmount}

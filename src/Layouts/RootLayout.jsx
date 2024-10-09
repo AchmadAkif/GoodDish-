@@ -20,7 +20,7 @@ function RootLayout() {
   const [revenue, setRevenue] = useState(0);
   const [itemSold, setItemSold] = useState(0);
 
-  const onOpenDrawer = () => {
+  const onClickDrawer = () => {
     setDrawerIsOpen(!drawerIsOpen);
   };
 
@@ -37,7 +37,7 @@ function RootLayout() {
             <Navbar
               handleSearchQuery={onSearchQuery}
               searchKeyword={searchKeyword}
-              handleOpenDrawer={onOpenDrawer}
+              handleOpenDrawer={onClickDrawer}
               productOnCart={productOnCart}
             />
           </Header>
@@ -46,7 +46,7 @@ function RootLayout() {
               context={[
                 searchKeyword,
                 drawerIsOpen,
-                setDrawerIsOpen,
+                onClickDrawer,
                 productOnCart,
                 setProductOnCart,
                 revenue,
