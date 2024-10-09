@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { ConfigProvider, Layout } from 'antd';
 import { ToastContainer } from 'react-toastify';
 import { notifySuccess, notifyError } from '../utils/toastify';
+import configProvider from '../Themes/configProvider';
 const { Header, Content } = Layout;
+
 
 import Navbar from '../Components/Layouts/Navbar';
 import Sidebar from '../Components/Layouts/Sidebar/Sidebar';
@@ -27,48 +29,19 @@ function RootLayout() {
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Menu: {
-            itemColor: '#909090',
-            itemHoverColor: '#fff',
-            itemHoverBg: '#121212',
-            itemDisabledColor: '#525252',
-          },
-          Radio: {
-            buttonBg: '#1F1F1F',
-            buttonColor: '#fff',
-            colorBorder: '#1f1f1f',
-            buttonSolidCheckedBg: '#fff',
-            buttonSolidCheckedColor: '#000',
-            buttonSolidCheckedHoverBg: '#ff',
-          },
-        },
-      }}
-    >
+    <ConfigProvider theme={configProvider}>
       <Layout>
         <Sidebar />
         <Layout>
-          <Header
-            style={{
-              padding: 0,
-              background: '#fff',
-            }}
-          >
+          <Header style={{ padding: 0, background: '#fff' }}>
             <Navbar
               handleSearchQuery={onSearchQuery}
               searchKeyword={searchKeyword}
-              showCartBtn={isOnLocation}
               handleOpenDrawer={onOpenDrawer}
               productOnCart={productOnCart}
             />
           </Header>
-          <Content
-            style={{
-              margin: '24px 16px 0',
-            }}
-          >
+          <Content style={{ margin: '24px 16px 0' }}>
             <Outlet
               context={[
                 searchKeyword,
