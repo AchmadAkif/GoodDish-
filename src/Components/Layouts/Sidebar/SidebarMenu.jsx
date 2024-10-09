@@ -1,6 +1,10 @@
 import { Menu } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
-const SidebarMenu = ({ navigate }) => {
+const SidebarMenu = ({ }) => {
+  const navigate = useNavigate();
+
+
   return (
     <>
       <div className="h-[100px] flex items-center justify-center bg-[#121212]">

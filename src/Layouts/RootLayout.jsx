@@ -9,19 +9,22 @@ import Navbar from '../Components/Layouts/Navbar';
 import Sidebar from '../Components/Layouts/Sidebar/Sidebar';
 
 function RootLayout() {
-  // Navigate Router
-  const location = useLocation();
-  const navigate = useNavigate();
-
   // Controlling POS Drawer
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-  const isOnLocation = location.pathname === '/POS';
 
   // Global State
   const [searchKeyword, setSearchKeyword] = useState('');
   const [productOnCart, setProductOnCart] = useState([]);
   const [revenue, setRevenue] = useState(0);
   const [itemSold, setItemSold] = useState(0);
+
+  const onOpenDrawer = () => {
+    setDrawerIsOpen(!drawerIsOpen);
+  };
+
+  const onSearchQuery = (value) => {
+    setSearchKeyword(value);
+  };
 
   return (
     <ConfigProvider
@@ -45,7 +48,7 @@ function RootLayout() {
       }}
     >
       <Layout>
-        <Sidebar navigate={navigate} />
+        <Sidebar />
         <Layout>
           <Header
             style={{
@@ -54,10 +57,10 @@ function RootLayout() {
             }}
           >
             <Navbar
-              setSearchKeyword={setSearchKeyword}
+              handleSearchQuery={onSearchQuery}
+              searchKeyword={searchKeyword}
               showCartBtn={isOnLocation}
-              drawerIsOpen={drawerIsOpen}
-              setDrawerIsOpen={setDrawerIsOpen}
+              handleOpenDrawer={onOpenDrawer}
               productOnCart={productOnCart}
             />
           </Header>
