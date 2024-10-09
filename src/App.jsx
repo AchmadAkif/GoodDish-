@@ -10,9 +10,9 @@ import {
 
 // Pages
 import RootLayout from './Layouts/RootLayout';
-import Home from './Containers/Home';
-import POS from './Containers/POS';
-import About from './Containers/About';
+import Home from './Pages/Home';
+import POS from './Pages/POS';
+import About from './Pages/About';
 
 function App() {
   const router = createBrowserRouter(

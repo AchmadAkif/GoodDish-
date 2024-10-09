@@ -188,11 +188,6 @@ function POS() {
         onRemoveAmount={handleRemoveAmount}
         onRemoveProduct={handleRemoveProduct}
         onPlaceOrder={handlePlaceOrder}
-      // onAmountChange={handleAmountChange}
-      // amount={amount}
-      // setAmount={setAmount}
-      // revenue={revenue}
-      // setRevenue={setRevenue}
       />
     </div>
   );
