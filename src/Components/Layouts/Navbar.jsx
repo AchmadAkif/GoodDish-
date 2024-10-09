@@ -1,29 +1,23 @@
-// Antd
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Badge, Button } from 'antd';
+import { useLocation } from 'react-router-dom';
 
-function Navbar({
-  setSearchKeyword,
-  drawerIsOpen,
-  setDrawerIsOpen,
-  showCartBtn,
+const Navbar = ({
+  searchKeyword,
+  handleSearchQuery,
+  handleOpenDrawer,
   productOnCart,
-}) {
-  const handleClick = () => {
-    setDrawerIsOpen(!drawerIsOpen);
-  };
-
-  const handleSearch = (e) => {
-    setSearchKeyword(e.target.value);
-  };
+}) => {
+  const isOnLocation = useLocation().pathname === '/POS';
 
   return (
     <>
-      {showCartBtn ? (
+      {isOnLocation ? (
         <div className="flex px-5 justify-end items-center font-gilroyBold">
           <div className="space-x-3">
             <input
-              onChange={handleSearch}
+              onChange={(e) => handleSearchQuery(e.target.value)}
+              value={searchKeyword}
               type="text"
               placeholder="Type to search"
               className="h-[30px] outline-none bg-[#eaeaea] rounded-2xl px-3 font-gilroyMed"
@@ -33,7 +27,7 @@ function Navbar({
                 className="bg-[#eaeaea] border-0 shadow-none"
                 shape="circle"
                 icon={<ShoppingCartOutlined />}
-                onClick={handleClick}
+                onClick={handleOpenDrawer}
               />
             </Badge>
           </div>
@@ -45,6 +39,6 @@ function Navbar({
       )}
     </>
   );
-}
+};
 
 export default Navbar;

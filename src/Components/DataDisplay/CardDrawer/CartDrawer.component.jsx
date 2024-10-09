@@ -15,6 +15,7 @@ const CartDrawer = ({
   onRemoveAmount,
   onPlaceOrder,
 }) => {
+
   return (
     <Drawer
       style={style}
