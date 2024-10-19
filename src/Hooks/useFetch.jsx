@@ -14,7 +14,6 @@ const useFetch = (url) => {
             throw Error('URL doesnt exist');
           }
         }
-        console.log(res);
         return res.json();
       })
       .then((data) => {

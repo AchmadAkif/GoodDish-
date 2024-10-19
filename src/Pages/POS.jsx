@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 
 // Component
 import Carousel from '../Components/DataDisplay/Carousel/Carousel.component';
-import CartDrawer from '../Components/DataDisplay/CardDrawer/CartDrawer.component';
-import LoadingSkeleton from '../Commons/Skeleton';
+import CartDrawer from '../Components/DataDisplay/CartDrawer/CartDrawer.component';
+import LoadingSkeleton from '../Components/Commons/Skeleton';
 
 // Hooks
 import { useOutletContext } from 'react-router-dom';
@@ -24,7 +24,6 @@ function POS() {
     setItemSold,
     notifySuccess,
   ] = useOutletContext();
-
 
   // Fetch
   const { data: productData, isLoading } = useFetch(

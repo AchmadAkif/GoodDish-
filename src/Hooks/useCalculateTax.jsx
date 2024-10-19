@@ -8,7 +8,6 @@ const useCalculateTax = (productOnCart) => {
     let total = 0;
     let sub = 0;
 
-
     productOnCart.forEach((product) => {
       sub += product.price * product.amount;
     });

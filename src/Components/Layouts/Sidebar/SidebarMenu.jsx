@@ -18,7 +18,7 @@ const SidebarMenu = ({ }) => {
           { label: 'Home', key: '/' },
           { label: 'Food & Drinks', key: 'POS' },
           { label: 'About', key: 'about' },
-          { label: 'Messages', disabled: true },
+          { label: 'Sales', disabled: true },
           { label: 'Bills', disabled: true },
 
           { label: 'Setting', disabled: true },
