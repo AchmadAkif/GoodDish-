@@ -1,6 +1,3 @@
-// React
-import { useEffect, useState } from 'react';
-
 // Component
 import Carousel from '../Components/DataDisplay/Carousel/Carousel.component';
 import CartDrawer from '../Components/DataDisplay/CartDrawer/CartDrawer.component';

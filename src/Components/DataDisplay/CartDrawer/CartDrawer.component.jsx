@@ -1,6 +1,7 @@
-import { useState } from 'react';
 import { Drawer } from 'antd';
 import { style, bodyStyle } from './CartDrawer.style';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleDrawer } from './slice';
 
 import ItemList from './ItemList/ItemList.component';
 import PriceTable from '../PriceTable/PriceTable';
@@ -8,13 +9,15 @@ import useCalculateTax from '../../../Hooks/useCalculateTax';
 
 const CartDrawer = ({
   onClickDrawer,
-  drawerIsOpen,
   productOnCart,
   onRemoveProduct,
   onAddAmount,
   onRemoveAmount,
   onPlaceOrder,
 }) => {
+  const drawerStatus = useSelector(state => state.drawer.isOpen);
+  const dispatch = useDispatch();
+
   const { subtotalPrice, totalPrice } = useCalculateTax(productOnCart,);
 
   return (
@@ -24,8 +27,8 @@ const CartDrawer = ({
       title="Current Order"
       placement="right"
       closeIcon={false}
-      onClose={onClickDrawer}
-      open={drawerIsOpen}
+      onClose={() => dispatch(toggleDrawer())}
+      open={drawerStatus}
       className="font-gilroyMed"
     >
       <ItemList
