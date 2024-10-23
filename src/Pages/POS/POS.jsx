@@ -11,10 +11,6 @@ function POS() {
 
   const [
     searchKeyword,
-    drawerIsOpen,
-    onClickDrawer,
-    productOnCart,
-    setProductOnCart,
     revenue,
     setRevenue,
     itemSold,
@@ -91,9 +87,6 @@ function POS() {
         )}
       </div>
       <CartDrawer
-        onClickDrawer={onClickDrawer}
-        drawerIsOpen={drawerIsOpen}
-        productOnCart={productOnCart}
         onRemoveAmount={handleRemoveAmount}
         onRemoveProduct={handleRemoveProduct}
         onPlaceOrder={handlePlaceOrder}

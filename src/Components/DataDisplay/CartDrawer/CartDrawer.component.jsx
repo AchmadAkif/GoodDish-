@@ -8,12 +8,12 @@ import PriceTable from '../PriceTable/PriceTable';
 // import useCalculateTax from '../../../Hooks/useCalculateTax';
 
 const CartDrawer = ({
-  productOnCart,
   onRemoveProduct,
   onRemoveAmount,
   onPlaceOrder,
 }) => {
   const drawerStatus = useSelector(state => state.drawer.isOpen);
+  const isCartEmpty = useSelector(state => state.cart.productOnCart).length;
   const dispatch = useDispatch();
 
   // const { subtotalPrice, totalPrice } = useCalculateTax(productOnCart,);
@@ -30,14 +30,13 @@ const CartDrawer = ({
       className="font-gilroyMed"
     >
       <ItemList
-        productOnCart={productOnCart}
         onRemoveProduct={onRemoveProduct}
         onRemoveAmount={onRemoveAmount}
       />
-      {productOnCart.length > 0 ? (
+      {isCartEmpty ? (
         <PriceTable
-          subtotalPrice={subtotalPrice}
-          totalPrice={totalPrice}
+          // subtotalPrice={subtotalPrice}
+          // totalPrice={totalPrice}
           onPlaceOrder={onPlaceOrder}
         />
       ) : null}
