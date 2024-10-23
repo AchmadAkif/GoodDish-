@@ -10,7 +10,6 @@ import PriceTable from '../PriceTable/PriceTable';
 const CartDrawer = ({
   productOnCart,
   onRemoveProduct,
-  onAddAmount,
   onRemoveAmount,
   onPlaceOrder,
 }) => {
@@ -33,7 +32,6 @@ const CartDrawer = ({
       <ItemList
         productOnCart={productOnCart}
         onRemoveProduct={onRemoveProduct}
-        onAddAmount={onAddAmount}
         onRemoveAmount={onRemoveAmount}
       />
       {productOnCart.length > 0 ? (

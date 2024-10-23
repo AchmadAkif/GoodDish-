@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ItemCard from '../ItemCard/ItemCard.component';
 
 
-const ItemList = ({ onRemoveProduct, onAddAmount, onRemoveAmount }) => {
+const ItemList = ({ onRemoveProduct, onRemoveAmount }) => {
   const productOnCart = useSelector(state => state.cart.productOnCart);
 
   return (
@@ -16,7 +16,6 @@ const ItemList = ({ onRemoveProduct, onAddAmount, onRemoveAmount }) => {
               key={uuidv4()}
               product={product}
               onRemoveProduct={onRemoveProduct}
-              onAddAmount={onAddAmount}
               onRemoveAmount={onRemoveAmount}
             />
           ))

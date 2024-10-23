@@ -3,7 +3,7 @@ import { InputNumber, Button } from 'antd';
 import { useDispatch } from 'react-redux';
 import { addAmount } from '../../../../Pages/POS/slice';
 
-const ItemCard = ({ product, onRemoveProduct, onAddAmount, onRemoveAmount }) => {
+const ItemCard = ({ product, onRemoveProduct, onRemoveAmount }) => {
   const dispatch = useDispatch();
 
   return (

@@ -31,30 +31,6 @@ function POS() {
     setProductOnCart(productOnCart.filter((product) => product.id !== id));
   };
 
-  const handleAddAmount = (dataID) => {
-    let checkProductIsExist = productOnCart.find((data) => dataID === data.id);
-
-    if (checkProductIsExist) {
-      let newCart = [];
-      let newItem;
-
-      productOnCart.forEach((dataProduct) => {
-        if (dataProduct.id == dataID) {
-          newItem = {
-            ...dataProduct,
-            amount: dataProduct.amount + 1,
-          };
-
-          newCart.push(newItem);
-        } else {
-          newCart.push(dataProduct);
-        }
-      });
-
-      setProductOnCart(newCart);
-    }
-  };
-
   const handleRemoveAmount = (dataID) => {
     let checkProductIsExist = productOnCart.find((data) => dataID === data.id);
 
@@ -118,7 +94,6 @@ function POS() {
         onClickDrawer={onClickDrawer}
         drawerIsOpen={drawerIsOpen}
         productOnCart={productOnCart}
-        onAddAmount={handleAddAmount}
         onRemoveAmount={handleRemoveAmount}
         onRemoveProduct={handleRemoveProduct}
         onPlaceOrder={handlePlaceOrder}
