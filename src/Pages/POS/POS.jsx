@@ -27,39 +27,6 @@ function POS() {
     'https://good-dish-json-server.vercel.app/products',
   );
 
-  // const handleAddToCart = (product) => {
-  //   let checkProductIsExist = productOnCart.find(
-  //     (data) => data.id === product.id,
-  //   );
-
-  //   if (checkProductIsExist) {
-  //     let newCart = [];
-  //     let newItem;
-
-  //     productOnCart.forEach((dataProduct) => {
-  //       if (dataProduct.id == product.id) {
-  //         newItem = {
-  //           ...dataProduct,
-  //           amount: dataProduct.amount + 1,
-  //         };
-
-  //         newCart.push(newItem);
-  //       } else {
-  //         newCart.push(dataProduct);
-  //       }
-  //     });
-
-  //     setProductOnCart(newCart);
-  //   } else {
-  //     const productCopy = {
-  //       ...product,
-  //       amount: 1,
-  //     };
-
-  //     setProductOnCart([...productOnCart, productCopy]);
-  //   }
-  // };
-
   const handleRemoveProduct = (id) => {
     setProductOnCart(productOnCart.filter((product) => product.id !== id));
   };
@@ -86,8 +53,6 @@ function POS() {
 
       setProductOnCart(newCart);
     }
-
-    // console.log(productOnCart)
   };
 
   const handleRemoveAmount = (dataID) => {
@@ -135,7 +100,6 @@ function POS() {
         {productData && (
           <Carousel
             searchKeyword={searchKeyword}
-            // handleAddToCart={handleAddToCart}
             productData={productData.soups}
           />
         )}
@@ -146,7 +110,6 @@ function POS() {
         {productData && (
           <Carousel
             searchKeyword={searchKeyword}
-            // handleAddToCart={handleAddToCart}
             productData={productData.salads}
           />
         )}

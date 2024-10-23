@@ -3,6 +3,7 @@ import { Badge, Button } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toggleDrawer } from '../DataDisplay/CartDrawer/slice';
+import { useSelector } from 'react-redux';
 
 const Navbar = ({
   searchKeyword,
@@ -10,6 +11,7 @@ const Navbar = ({
   productOnCart,
 }) => {
   const isOnLocation = useLocation().pathname === '/POS';
+  const productTotal = useSelector(state => state.cart.productOnCart).length;
   const dispatch = useDispatch();
 
   return (
@@ -24,7 +26,7 @@ const Navbar = ({
               placeholder="Type to search"
               className="h-[30px] outline-none bg-[#eaeaea] rounded-2xl px-3 font-gilroyMed"
             />
-            <Badge count={productOnCart.length}>
+            <Badge count={productTotal}>
               <Button
                 className="bg-[#eaeaea] border-0 shadow-none"
                 shape="circle"

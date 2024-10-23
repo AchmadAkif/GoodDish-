@@ -1,8 +1,10 @@
-import React from 'react';
 import { DeleteOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { InputNumber, Button } from 'antd';
+import { useDispatch } from 'react-redux';
 
 const ItemCard = ({ product, onRemoveProduct, onAddAmount, onRemoveAmount }) => {
+  const dispatch = useDispatch();
+
   return (
     <div
       className="flex justify-between items-end px-4 py-3 space-y-3 bg-[#1F1F1F] rounded-md"
