@@ -7,7 +7,7 @@ import {
 
 import RootLayout from './Layouts/RootLayout';
 import Home from './Pages/Home';
-import POS from './Pages/POS';
+import POS from './Pages/POS/POS';
 import About from './Pages/About';
 
 function App() {

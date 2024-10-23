@@ -3,27 +3,20 @@ import { Outlet } from 'react-router-dom';
 import { ConfigProvider, Layout } from 'antd';
 import { ToastContainer } from 'react-toastify';
 import { notifySuccess, notifyError } from '../utils/toastify';
-import configProvider from '../Themes/configProvider';
 import { Provider } from 'react-redux';
-import store from '../Redux/store';
 
+import store from '../Redux/store';
+import configProvider from '../Themes/configProvider';
 import Navbar from '../Components/Layouts/Navbar';
 import Sidebar from '../Components/Layouts/Sidebar/Sidebar';
 
 const { Header, Content } = Layout;
 
 function RootLayout() {
-  // Controlling POS Drawer
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-
   const [searchKeyword, setSearchKeyword] = useState('');
   const [productOnCart, setProductOnCart] = useState([]);
   const [revenue, setRevenue] = useState(0);
   const [itemSold, setItemSold] = useState(0);
-
-  const onClickDrawer = () => {
-    setDrawerIsOpen(!drawerIsOpen);
-  };
 
   const onSearchQuery = (value) => {
     setSearchKeyword(value);
@@ -39,7 +32,6 @@ function RootLayout() {
               <Navbar
                 handleSearchQuery={onSearchQuery}
                 searchKeyword={searchKeyword}
-                handleOpenDrawer={onClickDrawer}
                 productOnCart={productOnCart}
               />
             </Header>
@@ -47,8 +39,6 @@ function RootLayout() {
               <Outlet
                 context={[
                   searchKeyword,
-                  drawerIsOpen,
-                  onClickDrawer,
                   productOnCart,
                   setProductOnCart,
                   revenue,

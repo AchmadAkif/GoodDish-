@@ -1,6 +1,10 @@
 import { Button } from "antd";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../../Pages/POS/slice";
 
-const CarouselItem = ({ product, handleAddToCart }) => {
+const CarouselItem = ({ product }) => {
+  const dispatch = useDispatch();
+
   return (
     <div
       className="!flex justify-between px-5 py-6 bg-[#eaeaea] rounded-md"
@@ -11,7 +15,7 @@ const CarouselItem = ({ product, handleAddToCart }) => {
         <Button
           name={'Add to Cart'}
           className="bg-[#ffffff] border-0 font-gilroyMed"
-          onClick={() => handleAddToCart(product)}
+          onClick={() => dispatch(addProduct(product))}
         >
           Add to Cart
         </Button>

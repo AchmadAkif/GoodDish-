@@ -5,10 +5,9 @@ import { toggleDrawer } from './slice';
 
 import ItemList from './ItemList/ItemList.component';
 import PriceTable from '../PriceTable/PriceTable';
-import useCalculateTax from '../../../Hooks/useCalculateTax';
+// import useCalculateTax from '../../../Hooks/useCalculateTax';
 
 const CartDrawer = ({
-  onClickDrawer,
   productOnCart,
   onRemoveProduct,
   onAddAmount,
@@ -18,7 +17,7 @@ const CartDrawer = ({
   const drawerStatus = useSelector(state => state.drawer.isOpen);
   const dispatch = useDispatch();
 
-  const { subtotalPrice, totalPrice } = useCalculateTax(productOnCart,);
+  // const { subtotalPrice, totalPrice } = useCalculateTax(productOnCart,);
 
   return (
     <Drawer

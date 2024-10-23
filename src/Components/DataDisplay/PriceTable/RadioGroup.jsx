@@ -1,7 +1,9 @@
+import { useDispatch } from "react-redux";
 import { Radio, Button } from "antd";
 
-
 const RadioGroup = ({ onPlaceOrder }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="flex flex-col justify-center items-center">
       <Radio.Group
@@ -24,7 +26,7 @@ const RadioGroup = ({ onPlaceOrder }) => {
       <Button
         className="w-full h-[60px] bg-white font-gilroyBold text-[16px] text-black"
         type="primary"
-        onClick={() => onPlaceOrder()}
+        onClick={() => dispatch()}
       >
         Place Order
       </Button>

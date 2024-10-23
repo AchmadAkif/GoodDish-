@@ -10,7 +10,6 @@ const Navbar = ({
   productOnCart,
 }) => {
   const isOnLocation = useLocation().pathname === '/POS';
-
   const dispatch = useDispatch();
 
   return (
