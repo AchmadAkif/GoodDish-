@@ -1,6 +1,7 @@
 import { DeleteOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { InputNumber, Button } from 'antd';
 import { useDispatch } from 'react-redux';
+import { addAmount } from '../../../../Pages/POS/slice';
 
 const ItemCard = ({ product, onRemoveProduct, onAddAmount, onRemoveAmount }) => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const ItemCard = ({ product, onRemoveProduct, onAddAmount, onRemoveAmount }) => 
             className="bg-[#2d2d2d] border-0 shadow-none"
             type={'primary'}
             icon={<PlusOutlined />}
-            onClick={() => onAddAmount(product.id)}
+            onClick={() => dispatch(addAmount(product.id))}
           />
         </div>
       </div>

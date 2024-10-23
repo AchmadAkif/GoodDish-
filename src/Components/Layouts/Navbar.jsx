@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 const Navbar = ({
   searchKeyword,
   handleSearchQuery,
-  productOnCart,
 }) => {
   const isOnLocation = useLocation().pathname === '/POS';
   const productTotal = useSelector(state => state.cart.productOnCart).length;
